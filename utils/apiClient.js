@@ -1,21 +1,15 @@
 const { request } = require("@playwright/test");
-const environment = require("../config/environment");
+require("dotenv").config();
 
 class ApiClient {
-
     async getContext() {
-
         return await request.newContext({
-            baseURL: environment.baseURL,
-
+            baseURL: process.env.BASE_URL,
             extraHTTPHeaders: {
                 Accept: "application/json"
             }
-
         });
-
     }
-
 }
 
 module.exports = ApiClient;
